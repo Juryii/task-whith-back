@@ -72,7 +72,6 @@ export default {
 }
 .card-priority {
   border-radius: 3px;
-  width: 30%;
   text-align: center;
   font-style: normal;
   font-weight: bold;
