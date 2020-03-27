@@ -9,7 +9,9 @@
         class="mb-4"
         @blur="onInputBlur"
       />
-      <b-button type="submit" class="btn-task" block>Добавить колонку</b-button>
+      <b-button type="submit" class="modal-item__btn" block
+        >Добавить колонку</b-button
+      >
     </form>
   </b-card>
 </template>

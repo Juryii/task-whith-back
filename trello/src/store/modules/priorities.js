@@ -1,4 +1,4 @@
-import http from '@/services/http';
+import http from "@/services/http";
 
 export const namespaced = true;
 
@@ -8,14 +8,14 @@ export const state = () => ({
 
 export const mutations = {
   SET(state, data) {
-    state.data = data
+    state.data = data;
   }
 };
 
 export const actions = {
   async getList({ commit }) {
-    const { data: columns } = await http.get('priorities')
+    const { data: columns } = await http.get("priorities");
 
-    commit('SET', columns)
+    commit("SET", columns);
   }
 };

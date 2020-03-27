@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <g fill="#000" fill-rule="evenodd">
+    <rect x="7" width="2" height="5" rx="1"/>
+    <rect opacity=".7" y="7" width="5" height="2" rx="1"/>
+    <rect opacity=".1" x="11" y="7" width="5" height="2" rx="1"/>
+    <rect opacity=".4" x="7" y="11" width="2" height="5" rx="1"/>
+    <rect opacity=".25" transform="rotate(-45 12.475 12.475)" x="11.475" y="9.975" width="2" height="5" rx="1"/>
+    <rect opacity=".85" transform="rotate(-45 3.475 3.475)" x="2.475" y=".975" width="2" height="5" rx="1"/>
+    <rect opacity=".55" transform="rotate(45 3.475 12.475)" x="2.475" y="9.975" width="2" height="5" rx="1"/>
+  </g>
+</svg>
