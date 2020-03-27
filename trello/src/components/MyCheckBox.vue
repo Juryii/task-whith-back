@@ -5,9 +5,9 @@
       :id="'check-' + index"
       class="filter-drop-item__input"
     />
-    <span class="filter-drop-item__icon"
-      ><img class="filter-drop-item__icon-img" src="../assets/icons/ic-check.svg" alt=""
-    /></span>
+    <span class="filter-drop-item__icon">
+    <svg-icon class="filter-drop-item__icon-img" name="ic-check" width="11" height="8"></svg-icon>
+    </span>
     <span class="filter-drop-item__label-name">{{ name }}</span>
   </label>
 </template>
