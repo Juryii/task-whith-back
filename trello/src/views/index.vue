@@ -5,43 +5,10 @@
       <div class="the-content-header">
         <h1 class="the-content-header__text">Мои планы</h1>
         <div class="the-content-header__menu">
-          <button
-            class="the-content-header__menu-filter the-content-header__icon"
-            @click="isFilterBox = true"
-          >
-            <svg-icon name="ic-filter" width="22" height="20"></svg-icon>
-            <div
-              class="filter-drop-list"
-              v-show="isFilterBox"
-              @blur="isFilterBox = false"
-            >
-              <p class="filter-drop-list__header">Показать задачи с меткой</p>
-              <my-check-box
-                v-for="(checkboxName, index) in ChecboxLabelsName"
-                :key="checkboxName"
-                :name="checkboxName"
-                :index="index"
-              ></my-check-box>
-              <div class="filter-drop-list__buttons">
-                <input
-                  type="button"
-                  value="Показать все"
-                  class="filter-drop-list__button"
-                />
-                <input
-                  type="button"
-                  value="Отфильтровать"
-                  class="filter-drop-list__button"
-                />
-              </div>
-            </div>
-          </button>
-          <button
-            class="the-content-header__menu-plus-icon the-content-header__icon"
-          >
-            <svg-icon name="ic-plus" width="24" height="24"></svg-icon>
-            <!--            <img src="@/assets/icons/ic-plus.svg" alt="add" />-->
-          </button>
+          <!-- filter button -->
+          <my-filter-button></my-filter-button>
+          <!--  add button   -->
+          <my-add-button></my-add-button>
           <button
             class="the-content-header__task-button the-content-header__button"
           >
@@ -71,9 +38,9 @@
               @deleteColumn="deleteColumn(column.id, idx)"
             />
           </b-col>
-          <b-col cols="3">
+          <!--           <b-col cols="3">
             <new-column @submit="addNewColumn" />
-          </b-col>
+          </b-col> -->
         </b-row>
         <task-modal :data="modalItem" @updateTask="updateTask" />
       </b-container>
@@ -85,18 +52,18 @@
 import http from "../services/http";
 import TasksColumn from "../components/TasksColumn";
 import TaskModal from "../components/TaskModal";
-import NewColumn from "../components/NewColumn";
+import MyFilterButton from "../components/MyFilterButton.vue";
 import TheHeader from "../components/TheHeader";
-import MyCheckBox from "../components/MyCheckBox";
-// import columns from "../mock/columns";
+import MyAddButton from "../components/MyAddButton";
 
 export default {
   components: {
     TasksColumn,
     TaskModal,
-    NewColumn,
+    // NewColumn,
     TheHeader,
-    MyCheckBox
+    MyFilterButton,
+    MyAddButton
   },
   data() {
     return {
@@ -216,29 +183,6 @@ export default {
   }
   &__calendar-button {
     border: solid 1px #ebedf2;
-  }
-}
-.filter-drop-list {
-  top: 65px;
-  padding: 26px 20px 0px 20px;
-  z-index: 10;
-  width: 300px;
-  background-color: #fff;
-  position: absolute;
-  box-shadow: 0 12px 31px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.03);
-  &__header {
-  }
-  &__buttons {
-    display: flex;
-    border-top: 1px solid;
-    margin-left: -20px;
-    margin-right: -20px;
-  }
-  &__button {
-    background: white;
-    border: none;
-    height: 100%;
-    padding: 10px 20px;
   }
 }
 .the-content-block {

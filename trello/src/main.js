@@ -8,10 +8,13 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import store from "@/store";
 import { required } from "vee-validate/dist/rules";
 import SvgIcon from "./components/SvgIcon";
+import AsPopover from "./components/AsPopover";
+
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.component("ValidationProvider", ValidationProvider);
 Vue.component("SvgIcon", SvgIcon);
+Vue.component("AsPopover", AsPopover);
 
 extend("required", {
   ...required,

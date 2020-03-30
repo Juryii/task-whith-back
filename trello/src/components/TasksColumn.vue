@@ -25,16 +25,17 @@
       <b-card-title class="task-column__title">
         {{ data.name }}: {{ lengthColumn }}
       </b-card-title>
-      <svg-icon
-        name="ic-dots"
-        width="24"
-        height="24"
-        class="delete-column"
-        @click="deleteColumn"
-      ></svg-icon>
+
+      <!--      dots button-->
+      <my-dots-button></my-dots-button>
     </template>
     <div data-simplebar class="tasks-column__list">
-      <div class="task-column__card" v-for="card in data.items" :key="card.id">
+      <div
+        class="task-column__card"
+        v-for="(card, idx) in data.items"
+        :key="card.id"
+        @click="showItem(idx)"
+      >
         <!--      add v-for idx before card  @click="showItem(idx)"-->
         <task-card :data="card"></task-card>
       </div>
@@ -45,16 +46,19 @@
 <script>
 import "simplebar";
 import "simplebar/dist/simplebar.css";
+import MyDotsButton from "../components/MyDotsButton";
 import TaskCard from "./TaskCard";
 import http from "../services/http";
 
 export default {
   components: {
-    TaskCard
+    TaskCard,
+    MyDotsButton
   },
   data() {
     return {
       isShowInput: false,
+      isShowDoteMenu: false,
       taskName: ""
     };
   },
@@ -158,8 +162,11 @@ export default {
 .card-body {
   padding: 0;
 }
-
 .delete-column:hover {
   cursor: pointer;
+}
+
+.column-drop-list {
+  z-index: 999;
 }
 </style>

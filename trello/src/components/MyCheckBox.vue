@@ -1,14 +1,19 @@
 <template>
-  <label class="filter-drop-item" :for="'check-' + index">
+  <label class="filter-drop-item" :for="'check-' + id">
     <input
       type="checkbox"
-      :id="'check-' + index"
+      :id="'check-' + id"
       class="filter-drop-item__input"
     />
     <span class="filter-drop-item__icon">
-    <svg-icon class="filter-drop-item__icon-img" name="ic-check" width="11" height="8"></svg-icon>
+      <svg-icon
+        class="filter-drop-item__icon-img"
+        name="ic-check"
+        width="11"
+        height="8"
+      ></svg-icon>
     </span>
-    <span class="filter-drop-item__label-name">{{ name }}</span>
+    <span class="filter-drop-item__label-name">{{ nameIcon }}</span>
   </label>
 </template>
 
@@ -16,11 +21,11 @@
 export default {
   name: "MyCheckBox",
   props: {
-    name: {
+    nameIcon: {
       type: String,
       required: true
     },
-    index: {
+    id: {
       type: Number,
       required: true
     }
@@ -31,20 +36,21 @@ export default {
 <style scoped lang="scss">
 .filter-drop-item {
   display: flex;
+  z-index: 9999;
   align-items: center;
   padding: 5px 20px;
   margin-left: -20px;
   margin-right: -20px;
-  &__label-name{
-    border-radius: 4px;
-    margin-left: 10px;
-    padding: 4px 6px;
-  }
-  :hover{
+  :hover {
     background-color: #f7f9fb;
     cursor: pointer;
+    &__label-name {
+      border-radius: 4px;
+      margin-left: 10px;
+      padding: 4px 6px;
+    }
   }
-  &__icon{
+  &__icon {
     width: 20px;
     height: 20px;
     border-radius: 3px;
@@ -52,17 +58,17 @@ export default {
     justify-content: center;
     padding: 6px;
     margin-right: 10px;
-    &-img{
+    &-img {
       opacity: 0;
       stroke: #fff;
     }
   }
-  &__input{
+  &__input {
     display: none;
     &:checked + .filter-drop-item__icon {
       background-color: #006eff;
     }
-    &:checked ~ .filter-drop-item__label-name{
+    &:checked ~ .filter-drop-item__label-name {
       border-radius: 4px;
       background-color: rgba(49, 139, 250, 0.2);
     }
@@ -71,5 +77,4 @@ export default {
     }
   }
 }
-
 </style>
