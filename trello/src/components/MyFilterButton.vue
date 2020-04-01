@@ -1,6 +1,6 @@
 <template>
   <div class="filter-frop">
-    <as-popover trigger="click">
+    <as-popover append-to-body trigger="click">
       <button slot="ref" class="filter-drop-icon">
         <svg-icon name="ic-filter" width="22" height="20"></svg-icon>
       </button>
@@ -66,6 +66,7 @@ export default {
   padding: 26px 20px 0px 20px;
   background-color: #fff;
   bottom: 0;
+  z-index: 100;
   box-shadow: 0 12px 31px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.03);
   &__header {
   }

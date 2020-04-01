@@ -1,6 +1,6 @@
 <template>
   <div>
-    <as-popover trigger="click">
+    <as-popover append-to-body trigger="click">
       <button class="add-drop-icon" slot="ref">
         <svg-icon name="ic-plus" width="24" height="24"></svg-icon>
       </button>

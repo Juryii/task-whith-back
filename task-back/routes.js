@@ -97,6 +97,20 @@ router.patch("/columns", jsonParser, (req, res) => {
   );
 });
 
+// перемещение всех задач в другую колонку
+router.patch("/move-tasks", jsonParser, (req, res) => {
+  const { column_id, old_column_id } = req.body;
+  db.query("update tasks set column_id = ? where column_id = ? ",
+    [column_id, old_column_id],
+    (err, results) => {
+      if(err) {
+        res.send(err);
+      }
+      res.send(results[0]);
+    })
+
+})
+
 //patch редактирование задачи в модалке
 // принимать все поля
 router.patch("/tasks", jsonParser, (req, res) => {

@@ -27,7 +27,7 @@
       </b-card-title>
 
       <!--      dots button-->
-      <my-dots-button></my-dots-button>
+      <my-dots-button :currentIdColumn="data.id"></my-dots-button>
     </template>
     <div data-simplebar class="tasks-column__list">
       <div

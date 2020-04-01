@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import http from "../services/http";
 import TasksColumn from "../components/TasksColumn";
 import TaskModal from "../components/TaskModal";
@@ -68,7 +69,6 @@ export default {
   data() {
     return {
       ChecboxLabelsName: ["Работа", "Важно", "Супер-важно", "Читать", "Книги"],
-      columns: [],
       modalItem: {},
       itemIndexonModal: "",
       columnIndexModal: "",
@@ -76,12 +76,14 @@ export default {
     };
   },
   mounted() {
-    http.get("/columns").then(response => {
-      this.columns = response.data;
-    });
-
     this.$store.dispatch("users/getList");
     this.$store.dispatch("priorities/getList");
+    this.$store.dispatch("columns/getList");
+  },
+  computed: {
+    ...mapState({
+      columns: state => state.columns.data
+    })
   },
   methods: {
     updateTask(task) {

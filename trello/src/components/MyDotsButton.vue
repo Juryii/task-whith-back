@@ -1,15 +1,18 @@
 <template>
-  <as-popover trigger="click">
+  <as-popover append-to-body trigger="click">
     <div class="column-drop-list">
       <button class="column-drop-list__item">Удалить колонку</button>
 
-      <as-popover>
+      <as-popover append-to-body>
         <button slot="ref" class="column-drop-list__item">
           Переместить задачи
         </button>
         <div>
-          <ul>
-            <li>columns</li>
+          <ul v-for="column in columns" :key="column.id">
+            <li @click="moveTasks(column.id)">
+              {{ column.name }}
+              <span v-if="column.id === currentIdColumn">текущая</span>
+            </li>
           </ul>
         </div>
       </as-popover>
@@ -26,12 +29,41 @@
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 import AsPopover from "../components/AsPopover";
 
 export default {
   name: "MyDotsButton",
   components: {
     AsPopover
+  },
+  computed: {
+    ...mapState({
+      columns: state => state.columns.data
+    })
+  },
+  methods: {
+    moveTasks(columnId) {
+      if (columnId === this.currentIdColumn) {
+        alert(
+          "к сожалению перемещение не возможно, т.к задачи уже находятся в этой колонке"
+        );
+        return;
+      }
+      const payload = {
+        column_id: columnId,
+        old_column_id: this.currentIdColumn
+      };
+      this.moveTasksColumn(payload);
+      console.log(payload);
+    },
+    ...mapActions({ moveTasksColumn: "columns/moveTasks" })
+  },
+  props: {
+    currentIdColumn: {
+      type: Number,
+      required: true
+    }
   }
 };
 </script>
